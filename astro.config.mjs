@@ -5,15 +5,15 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astrojs.org",
+  site: "https://astro-blog.gerardocastillo.me/",
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !/https:\/\/astrojs\.org\/blog\/[0-9]+/.test(page),
+      filter: (page) =>
+        !/https:\/\/astro-blog\.gerardocastillo\.me\/blog\/[0-9]+/.test(page),
       customPages: [
-        "https://astrojs.org/discord",
-        "https://astrojs.org/twitch",
-        "https://astrojs.org/twitter",
+        "https://www.linkedin.com/in/gerrcass",
+        "https://github.com/gerrcass",
       ],
       changefreq: "weekly",
       lastmod: new Date(),
