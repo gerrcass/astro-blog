@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+// import Link from '../components/Link.astro';
+import girlPhoto from "../assets/pexels-tuấn-kiệt-jr-1468379.jpg";
+---
+
+<Layout seo={{ title: "About Sakura Stellaris" }}>
+  <Image
+    src={girlPhoto}
+    alt="A photo of Sakura Stellaris"
+    width={256}
+    quality="max"
+    class="rounded-full mx-auto aspect-square object-cover"
+  />
+  <p>
+    Howdy, I'm <b>Sakura Stellaris</b>, hailing from the Land of the Rising Sun,
+    Japan, but currently navigating the tech galaxy from sunny California. As a
+    fullstack engineer, I weave intricate digital constellations and bring my
+    creations to life. Beyond the realms of code, you'll often find me strumming
+    the guitar, dancing my fingers across the piano keys, and serenading the
+    cosmos with the sweet melodies of the violin. It's not just about mastering
+    the code, but also about orchestrating a harmonious symphony of skills. My
+    fascination with the cosmos extends beyond the digital space. I'm drawn to
+    the mysteries of the universe, exploring both the cosmic wonders of code and
+    the celestial wonders of the night sky. When I'm not diving into the
+    intricacies of algorithms, you might catch me stargazing or perhaps even
+    contemplating the parallels between the strings of a guitar and the strings
+    of the universe. Come join me on this cosmic journey as I balance the
+    harmony of technology, the melody of music, and the infinite possibilities
+    that lie within the vastness of the cosmos! 🌌🎸🎹🎻
+  </p>
+</Layout>

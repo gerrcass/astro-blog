@@ -1,51 +1,82 @@
 ---
+import { SEO, type Props as SEOProps } from "astro-seo";
+import Link from "../components/Link.astro";
+
 interface Props {
-	title: string;
+  seo?: SEOProps;
 }
 
-const { title } = Astro.props;
+const { seo } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <Link rel="sitemap" href="/sitemap-index.xml" />
+    <SEO
+      {...seo}
+      title={seo?.title ?? "Sakura Stellaris's personal blog site"}
+      description={seo?.description ?? "Fictional blog built with Astro"}
+    />
+  </head>
+  <body class="w-full max-w-3xl mx-auto min-h-screen flex flex-col">
+    <div class="flex justify-between items-center py-4">
+      <header>
+        <a
+          href="https://egghead.io/courses/build-a-full-stack-blog-with-astro-7ffcf9ec"
+          class="font-bold text-2xl hover:text-blue-500">Egghead ❤️ Astro</a
+        >
+      </header>
+      <nav>
+        <ul class="flex gap-4">
+          <li><Link href="/">Home</Link></li>
+          <li><Link href="/about">About</Link></li>
+          <li><Link href="/blog/1">Blog</Link></li>
+          <li>
+            <Link href="https://github.com/gerrcass" isExternal>GitHub</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main class="flex-1">
+      <slot />
+    </main>
+    <footer class="w-full mx-auto text-center py-4">
+      <span>© {new Date().getFullYear()} Gerardo Castillo.</span>
+    </footer>
+    <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background: #f6f6f6;
+        background-size: 224px;
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+    </style>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
